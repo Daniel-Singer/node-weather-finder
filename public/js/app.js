@@ -8,7 +8,7 @@ const messageTwo = document.querySelector('#message-2');
 weatherForm.addEventListener('submit', (e) => {
 
     const city = search.value;
-    const url = 'http://localhost:5000/weather?city=' + city;
+    const url = '/weather?city=' + city;
 
     messageOne.textContent = 'Loading...'
     messageTwo.textContent = '';
