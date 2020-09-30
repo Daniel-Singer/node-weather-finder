@@ -85,14 +85,14 @@ app.get('/weather', (req, res) => {
                 });
             }
             forecast(lat, long, (error, forecastData) => {
-                const { temperature, feelslike, weather_descriptions } = forecastData;
+                const { temperature, feelslike, weather_descriptions, wind_speed, humidity } = forecastData;
                 if (error) {
                     return res.send({
                         error
                     }) 
                 }
                 return res.send({
-                    forecast: `It is ${weather_descriptions} throughout the day, currently ${temperature}°C and it feels like ${feelslike}°C`,
+                    forecast: `It is ${weather_descriptions} throughout the day, currently ${temperature}°C and it feels like ${feelslike}°C. The wind speed is ${wind_speed} knots and the humidity is ${humidity} %`,
                     city,
                     address: req.query.city
                 })

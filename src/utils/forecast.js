@@ -5,7 +5,8 @@ const forecast = (long, lat, callback) => {
     const url = `http://api.weatherstack.com/current?access_key=48867b8a6a61569e722d46727a95d2fa&query=${lat},${long}&units=m`
     
     request({ url, json:true }, (error, response) => {
-        const {temperature, feelslike, weather_descriptions} = response.body.current;
+        console.log(response.body)
+        const {temperature, feelslike, weather_descriptions,wind_speed,humidity} = response.body.current;
         if (error) {
             callback('Unable to connect to service!', undefined)
         } else if (response.body.error) {
@@ -14,7 +15,9 @@ const forecast = (long, lat, callback) => {
             callback(undefined, {
                 temperature,
                 feelslike,
-                weather_descriptions
+                weather_descriptions,
+                wind_speed,
+                humidity
                 
             })
         }
